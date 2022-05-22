@@ -1,6 +1,0 @@
-- Grid to show all atd for the month
-- Show trends for the week, month, term, year
-- announcements and other info
-- studio engagement vs atd
-- seasonal decor
-- iconography / emoji
