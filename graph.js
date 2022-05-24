@@ -3,117 +3,43 @@ const color = {
   Red: "#D21404",
   Blue: "#0077be",
   Black: "#1b1b1b",
-  White: "#FFFFFF",
 };
 /*
-const timeData = {
-  labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14'],
-  datasets: [
-    {
-      label: 'Alice',
-      data: [851,848,855,900,853,849,901,853,838,850,845,847,841,851],
-      backgroundColor: [color.Red],
-      borderColor: [color.Red],
-    },
-    {
-      label: 'Bill',
-      data: [900,905,855,848,858,855,905,848,850,841,851,855,857,900],
-      backgroundColor: [color.Blue],
-      borderColor: [color.Blue],
-    }
-  ]
-};
-*/
+const custom_canvas_background_color = {
+  id: 'custom_canvas_background_color',
+  beforeDraw: (chart, args, options) => {
+    const {
+      ctx,
+      chartArea: { top, right, bottom, left, width, height },
+      scales: { x, y },
+    } = chart;
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.fillStyle = color.Green;
+    ctx.fillRect(left, top*1.6, width, height*.735);
+    ctx.restore();
+  },
+};*/
+
+function map_range(value, low1, high1, low2, high2) {
+  return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+}
+
+console.log()
 
 const timeData = {
-  labels: [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-    "13",
-    "14",
-  ],
+  labels: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14",],
   datasets: [
-    {
-      label: "Time Start",
-      data: [
-        dateToCurrentTime(2020, 1, 1, 9, 00),
-        dateToCurrentTime(2020, 1, 1, 9, 00),
-        dateToCurrentTime(2020, 1, 1, 9, 00),
-        dateToCurrentTime(2020, 1, 1, 9, 00),
-        dateToCurrentTime(2020, 1, 1, 9, 00),
-        dateToCurrentTime(2020, 1, 1, 9, 00),
-        dateToCurrentTime(2020, 1, 1, 9, 00),
-        dateToCurrentTime(2020, 1, 1, 9, 00),
-        dateToCurrentTime(2020, 1, 1, 9, 00),
-        dateToCurrentTime(2020, 1, 1, 9, 00),
-        dateToCurrentTime(2020, 1, 1, 9, 00),
-        dateToCurrentTime(2020, 1, 1, 9, 00),
-        dateToCurrentTime(2020, 1, 1, 9, 00),
-        dateToCurrentTime(2020, 1, 1, 9, 00),
-        dateToCurrentTime(2020, 1, 1, 9, 00),
-      ],
-    },
-    {
-      label: "Time End",
-      data: [
-        dateToCurrentTime(2020, 1, 1, 14, 50),
-        dateToCurrentTime(2020, 1, 1, 14, 50),
-        dateToCurrentTime(2020, 1, 1, 14, 50),
-        dateToCurrentTime(2020, 1, 1, 14, 50),
-        dateToCurrentTime(2020, 1, 1, 14, 50),
-        dateToCurrentTime(2020, 1, 1, 14, 50),
-        dateToCurrentTime(2020, 1, 1, 14, 50),
-        dateToCurrentTime(2020, 1, 1, 14, 50),
-        dateToCurrentTime(2020, 1, 1, 14, 50),
-        dateToCurrentTime(2020, 1, 1, 14, 50),
-        dateToCurrentTime(2020, 1, 1, 14, 50),
-        dateToCurrentTime(2020, 1, 1, 14, 50),
-        dateToCurrentTime(2020, 1, 1, 14, 50),
-        dateToCurrentTime(2020, 1, 1, 14, 50),
-        dateToCurrentTime(2020, 1, 1, 14, 50),
-      ],
-    },
-    {
-      label: "Average",
-      data: [
-        dateToCurrentTime(2022, 6, 23, 9, 30),
-        dateToCurrentTime(2022, 6, 23, 9, 00),
-        dateToCurrentTime(2022, 6, 23, 9, 00),
-        dateToCurrentTime(2022, 6, 23, 9, 00),
-        dateToCurrentTime(2022, 6, 23, 9, 00),
-        dateToCurrentTime(2022, 6, 23, 9, 00),
-        dateToCurrentTime(2022, 6, 23, 9, 30),
-        dateToCurrentTime(2022, 6, 23, 9, 30),
-        dateToCurrentTime(2022, 6, 23, 9, 30),
-        dateToCurrentTime(2022, 6, 23, 9, 30),
-        dateToCurrentTime(2022, 6, 23, 9, 15),
-        dateToCurrentTime(2022, 6, 23, 9, 30),
-        dateToCurrentTime(2022, 6, 23, 9, 30),
-        dateToCurrentTime(2022, 6, 23, 9, 30),
-      ],
-      backgroundColor: [color.Blue],
-      borderColor: [color.Blue],
-    },
     {
       label: "Your Arrival",
       data: [
         dateToCurrentTime(2022, 6, 23, 10, 30),
-        dateToCurrentTime(2022, 6, 23, 8, 00),
-        dateToCurrentTime(2022, 6, 23, 8, 00),
-        dateToCurrentTime(2022, 6, 23, 8, 00),
-        dateToCurrentTime(2022, 6, 23, 8, 00),
-        dateToCurrentTime(2022, 6, 23, 8, 00),
-        dateToCurrentTime(2022, 6, 23, 8, 30),
+        dateToCurrentTime(2022, 6, 23, 8, 40),
+        dateToCurrentTime(2022, 6, 23, 8, 45),
+        dateToCurrentTime(2022, 6, 23, 8, 50),
+        dateToCurrentTime(2022, 6, 23, 8, 40),
+        dateToCurrentTime(2022, 6, 23, 8, 50),
+        dateToCurrentTime(2022, 6, 23, 8, 35),
         dateToCurrentTime(2022, 6, 23, 8, 30),
         dateToCurrentTime(2022, 6, 23, 8, 30),
         dateToCurrentTime(2022, 6, 23, 8, 30),
@@ -122,47 +48,40 @@ const timeData = {
         dateToCurrentTime(2022, 6, 23, 8, 30),
         dateToCurrentTime(2022, 6, 23, 8, 30),
       ],
-      backgroundColor: [color.Black],
-      borderColor: [color.Black],
+      backgroundColor: '#00000000',
+      borderColor: '#00000000',
       fill: {
-        target: '0',
+        target: {value: 540},
         above: color.Red,
-        below: color.Green
-      }
+        below: color.Green,
+      },
     },
     {
       label: "Your Departure",
       data: [
+        dateToCurrentTime(2022, 6, 23, 14, 30),
         dateToCurrentTime(2022, 6, 23, 15, 00),
         dateToCurrentTime(2022, 6, 23, 15, 00),
         dateToCurrentTime(2022, 6, 23, 15, 00),
-        dateToCurrentTime(2022, 6, 23, 15, 00),
-        dateToCurrentTime(2022, 6, 23, 15, 00),
-        dateToCurrentTime(2022, 6, 23, 15, 00),
-        dateToCurrentTime(2022, 6, 23, 15, 00),
-        dateToCurrentTime(2022, 6, 23, 15, 00),
+        dateToCurrentTime(2022, 6, 23, 15, 10),
         dateToCurrentTime(2022, 6, 23, 15, 00),
         dateToCurrentTime(2022, 6, 23, 15, 00),
         dateToCurrentTime(2022, 6, 23, 15, 05),
         dateToCurrentTime(2022, 6, 23, 15, 00),
+        dateToCurrentTime(2022, 6, 23, 14, 30),
+        dateToCurrentTime(2022, 6, 23, 15, 05),
         dateToCurrentTime(2022, 6, 23, 15, 00),
-        dateToCurrentTime(2022, 6, 23, 15, 00),
+        dateToCurrentTime(2022, 6, 23, 14, 30),
+        dateToCurrentTime(2022, 6, 23, 15, 25),
       ],
-      backgroundColor: [color.Black],
-      borderColor: [color.Black],
+      backgroundColor: '#00000000',
+      borderColor: '#00000000',
       fill: {
-        target: '1',
+        target: {value: 890},
         above: color.Green,
         below: color.Red
       }
     }
-    /*,
-    {
-      label: 'Bill',
-      data: [900,905,855,848,858,855,905,848,850,841,851,855,857,900],
-      backgroundColor: [color.Blue],
-      borderColor: [color.Blue],
-    }*/,
   ],
 };
 
@@ -174,20 +93,19 @@ function dateToCurrentTime(y, mo, d, h, m) {
 
 function displayDataAsString(v, i, t) {
   //console.log(i);
-  if (v / 60 == 12) return 12 + ":" + (v % 60);
-  else return  ((v / 60) % 12) + ":" + (v % 60);
+  if (v / 60 == 12) return 12 + ":" + (v % 60) + '0';
+  else return  ((v / 60) % 12) + ":" + (v % 60) + '0';
 }
 
 const pieData = {
-  labels: ["On Time", "Late", "Sleep", "Transportation"],
+  labels: ["Slept In", "Transportation Issues", "Other"],
   datasets: [
     {
-      data: [25, 5, 15, 5],
+      data: [25, 5, 15],
       backgroundColor: [
-        color.Green, // On Time
-        color.Red, // Late
-        color.Blue, // Sleep
-        color.Black, // Transportation
+        color.Blue, // Late
+        color.Black, // Sleep
+        color.Red, // Transportation
       ],
     },
   ],
@@ -196,7 +114,12 @@ const pieData = {
 const lineConfig = {
   type: "line",
   data: timeData,
+  //plugins: [custom_canvas_background_color],
+  
   options: {
+    bands: {
+      yValue: 540
+  },
     scales: {
       y: {
         suggestedMin: 510,
@@ -222,3 +145,63 @@ const myLineChart = new Chart(
   document.getElementById("donutGraph"),
   donutConfig
 );
+
+things = [[10,5,15,5,5],[5,5,4,5,5],[5,5,5,5,5],[5,5,5,5,5]];
+
+const pieLineData = {
+  labels: ["1", "2", "3", "4", "5"],
+  datasets: [
+    {
+      data: combineData(things, 0, 1),
+      backgroundColor: color.Green,
+      borderColor: color.Green,
+      fill: 'start',
+    },
+    {
+      data: combineData(things, 0, 2),
+      backgroundColor: color.Red,
+      borderColor: color.Red,
+      fill: '-1',
+    },
+    {
+      data: combineData(things, 0, 3),
+      backgroundColor: color.Blue,
+      borderColor: color.Blue,
+      fill: '-1',
+    },
+    {
+      data: combineData(things, 0, 4),
+      backgroundColor: color.Black,
+      borderColor: color.Black,
+      fill: '-1',
+    },
+  ],
+};
+
+const pieLineConfig = {
+  type: "line",
+  data: pieLineData,
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+      }
+    },
+  },
+};
+
+function combineData(inputData, start = 0, end = inputData.length) {
+  let output = [];
+  for (let i = 0; i < inputData[0].length; i++) {
+    let runningTotal = 0;
+    for (let j = start; j < end; j++) {
+      runningTotal += inputData[j][i];
+    }
+    output.push(runningTotal);
+  }
+  return output;
+}
+
+console.log(combineData(things));
+
+const mypieLineChart = new Chart(document.getElementById("pieLine"), pieLineConfig);
