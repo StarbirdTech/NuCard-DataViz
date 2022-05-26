@@ -5,8 +5,22 @@
 // ✅ map the data to the same scale
 
 // ✅ use function to stack datasets on top of each other
-// ⬛ label y axis with % sign
-// ⬛ label x axis with dates
+// ✅ label y axis with % sign
+// ✅ label x axis with dates
+// ⬛ parse dates on x axis to improve readability
+// ⬛ make data stacking respect data visibility
+
+///////////////////////////////////////////
+
+const dateLabels = [];
+
+function getDates() {
+  for (let i = 0; i < data.length; i++) {
+    dateLabels.push(data[i].date);
+  }
+}
+
+getDates();
 
 ///////////////////////////////////////////
 
@@ -22,8 +36,6 @@ function packageData() {
 }
 
 packageData();
-
-console.log(packagedData);
 
 ///////////////////////////////////////////
 
@@ -44,12 +56,11 @@ function stackData() {
 }
 
 stackData();
-console.log(stackedData);
 
 ///////////////////////////////////////////
 
 const pieLineData = {
-  labels: ["1", "2", "3", "4", "5"],
+  labels: dateLabels,
   datasets: [
     {
       label: "Sleep",
@@ -84,7 +95,12 @@ const pieLineConfig = {
   options: {
     scales: {
       y: {
-        beginAtZero: true
+        beginAtZero: true,
+        ticks: {
+          callback: function(value, index, ticks) {
+            return value + '%';
+          }
+        }
       }
     }
   }
