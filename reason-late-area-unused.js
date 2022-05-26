@@ -21,3 +21,9 @@ function mapData(data) {
   }
   return data.map(x => x.map(y => y / max));
 }
+
+function stackValues(dIndex, rIndex) {
+  return dIndex * (reasonDict.length - 1) + rIndex;
+}
+
+console.log(stackValues(2, 1));

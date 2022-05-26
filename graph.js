@@ -5,6 +5,10 @@ const color = {
   Black: "#1b1b1b",
 };
 
+function percentage(partialValue, totalValue) {
+  return (100 * partialValue) / totalValue;
+}
+
 function map_range(value, low1, high1, low2, high2) {
   return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
