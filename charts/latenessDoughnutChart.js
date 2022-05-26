@@ -1,4 +1,4 @@
-const pieData = {
+const latenessDoughnutChartData = {
     labels: ["Slept In", "Transportation Issues", "Other"],
     datasets: [
       {
@@ -12,12 +12,12 @@ const pieData = {
     ],
   };
   
-  const donutConfig = {
+  const latenessDoughnutChartConfig = {
     type: "doughnut",
-    data: pieData,
+    data: latenessDoughnutChartData,
   };
   
-  const myLineChart = new Chart(
-    document.getElementById("donutGraph"),
-    donutConfig
+  const latenessDoughnutChart = new Chart(
+    document.getElementById("latenessDoughnutChart"),
+    latenessDoughnutChartConfig
   );

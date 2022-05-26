@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NuCard Data Viz Test</title>
+    <title>NuCard Data Viz</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.js" integrity="sha512-Lii3WMtgA0C0qmmkdCpsG0Gjr6M0ajRyQRQSbTF6BsrVh/nhZdHpVZ76iMIPvQwz1eoXC3DmAg9K51qT5/dEVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
   <body>
     <div class="wrapper">
-      <div class="box line"><canvas id="lineGraph"></canvas></div>
-      <div class="box line"><canvas id="pieLine"></canvas></div>
-      <div class="box pie"><canvas id="donutGraph"></canvas></div>
+      <div class="box line"><canvas id="attendanceAreaChart"></canvas></div>
+      <div class="box line"><canvas id="latenessAreaChart"></canvas></div>
+      <div class="box pie"><canvas id="latenessDoughnutChart"></canvas></div>
     </div>
   </body>
   <script src="data.js"></script>
-  <script src="graph.js"></script>
+  <script src="utility.js"></script>
   <script src="loadData.js"></script>
-  <script src="charts/personal-atd.js"></script>
-  <script src="charts/reason-late-area.js"></script>
-  <script src="charts/reason-late-donut.js"></script>
+  <script src="charts/attendanceAreaChart.js"></script>
+  <script src="charts/latenessAreaChart.js"></script>
+  <script src="charts/latenessDoughnutChart.js"></script>
 </html>

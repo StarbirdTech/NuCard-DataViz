@@ -1,4 +1,4 @@
-const timeData = {
+const attendanceAreaChartData = {
     labels: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14",],
     datasets: [
       {
@@ -67,9 +67,9 @@ const timeData = {
     ],
   };
 
-  const lineConfig = {
+  const attendanceAreaChartConfig = {
     type: "line",
-    data: timeData,
+    data: attendanceAreaChartData,
     options: {/*
       bands: {
         yValue: 540,
@@ -87,4 +87,4 @@ const timeData = {
     },
   };
 
-  const myChart = new Chart(document.getElementById("lineGraph"), lineConfig);
+  const attendanceAreaChart = new Chart(document.getElementById("attendanceAreaChart"), attendanceAreaChartConfig);

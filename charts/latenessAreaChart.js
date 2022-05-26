@@ -1,4 +1,4 @@
-// TODO
+// TODO: Lateness Reasons Area Graph
 // ✅ count the number of sleep, transit, and other
 // ✅ do this for each day
 // ✅ convert the data to a percentage
@@ -59,7 +59,7 @@ stackData();
 
 ///////////////////////////////////////////
 
-const pieLineData = {
+const latenessAreaChartData = {
   labels: dateLabels,
   datasets: [
     {
@@ -89,9 +89,9 @@ const pieLineData = {
   ],
 };
 
-const pieLineConfig = {
+const latenessAreaChartConfig = {
   type: "line",
-  data: pieLineData,
+  data: latenessAreaChartData,
   options: {
     scales: {
       y: {
@@ -106,4 +106,4 @@ const pieLineConfig = {
   }
 };
 
-const mypieLineChart = new Chart(document.getElementById("pieLine"), pieLineConfig);
+const latenessAreaChart = new Chart(document.getElementById("latenessAreaChart"), latenessAreaChartConfig);
