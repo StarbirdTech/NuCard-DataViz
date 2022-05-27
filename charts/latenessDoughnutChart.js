@@ -1,8 +1,22 @@
+///////////////////////////////////////////
+
+const latenessDoughnutChartLabels = [];
+
+function getDates() {
+  for (let i = 0; i < reasonDict.length-1; i++) {
+    latenessDoughnutChartLabels.push(capitalizeFirstLetter(reasonDict[i]));
+  }
+}
+
+getDates();
+
+///////////////////////////////////////////
+
 const latenessDoughnutChartData = {
-    labels: ["Slept In", "Transportation Issues", "Other"],
+    labels: latenessDoughnutChartLabels,
     datasets: [
       {
-        data: [25, 5, 15],
+        data: [data[0].reason[0].percent, data[0].reason[1].percent, data[0].reason[2].percent],
         backgroundColor: [
           color.Blue, // Late
           color.Black, // Sleep

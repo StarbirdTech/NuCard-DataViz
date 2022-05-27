@@ -27,3 +27,21 @@ function stackValues(dIndex, rIndex) {
 }
 
 console.log(stackValues(2, 1));
+
+const stackedData = [];
+
+function stackData() {
+  for (let day = 0; day < data.length; day++) {
+    for (let i = 0; i < packagedData.length; i++) {
+      let sum = 0;
+      stackedData.push([]);
+      for (let j = 0; j < i+1; j++) {
+        sum += packagedData[j][day];
+      }
+      if (sum > 100) {sum = 100}
+      stackedData[i].push(sum); 
+    }
+  }
+}
+
+//stackData();

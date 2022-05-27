@@ -3,7 +3,7 @@ const reasonDict = ["sleep", "transit", "other", "total"];
 const data =
 [
 {
-  "date": "04_13_22",
+  "date": "2022-05-20",
   "reason": [
     {"count": 0, "percent": 0},
     {"count": 0, "percent": 0},
@@ -188,7 +188,7 @@ const data =
   ]
 },
 {
-  "date": "04_13_22",
+  "date": "2022-05-21",
   "reason": [
     {"count": 0, "percent": 0},
     {"count": 0, "percent": 0},
@@ -373,7 +373,7 @@ const data =
   ]
 },
 {
-  "date": "04_13_22",
+  "date": "2022-05-22",
   "reason": [
     {"count": 0, "percent": 0},
     {"count": 0, "percent": 0},
@@ -558,7 +558,7 @@ const data =
   ]
 },
 {
-  "date": "04_13_22",
+  "date": "2022-05-23",
   "reason": [
     {"count": 0, "percent": 0},
     {"count": 0, "percent": 0},

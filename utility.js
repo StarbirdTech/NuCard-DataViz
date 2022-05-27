@@ -5,6 +5,10 @@ const color = {
   Black: "#1b1b1b",
 };
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function percentage(partialValue, totalValue) {
   return (100 * partialValue) / totalValue;
 }

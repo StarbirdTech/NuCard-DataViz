@@ -7,8 +7,30 @@
 // ✅ use function to stack datasets on top of each other
 // ✅ label y axis with % sign
 // ✅ label x axis with dates
-// ⬛ parse dates on x axis to improve readability
-// ⬛ make data stacking respect data visibility
+// ✅ parse dates on x axis to improve readability
+// ⬛ style chart type switch buttons
+
+function setChartType(type) {
+  latenessAreaChartConfig.type = type;
+  console.log(latenessAreaChartConfig.type);
+  latenessAreaChart.update();
+
+  if (checkChartType("line")) {
+    document.getElementById("typeSwitchButton line").style.borderColor='#000000';
+  } else {
+    document.getElementById("typeSwitchButton line").style.borderColor='#ffffff';
+  }
+  if (checkChartType("bar")) {
+    document.getElementById("typeSwitchButton bar").style.borderColor='#000000';
+  } else {
+    document.getElementById("typeSwitchButton bar").style.borderColor='#ffffff';
+  }
+}
+
+function checkChartType(value) {
+  if (value == latenessAreaChartConfig.type) {return true}
+  else {return false}
+}
 
 ///////////////////////////////////////////
 
@@ -16,7 +38,8 @@ const dateLabels = [];
 
 function getDates() {
   for (let i = 0; i < data.length; i++) {
-    dateLabels.push(data[i].date);
+    let d = new Date(data[i].date);
+    dateLabels.push(d.toLocaleString("en-US", { month: "long" }) + " " + d.getDate());
   }
 }
 
@@ -39,32 +62,12 @@ packageData();
 
 ///////////////////////////////////////////
 
-const stackedData = [];
-
-function stackData() {
-  for (let day = 0; day < data.length; day++) {
-    for (let i = 0; i < packagedData.length; i++) {
-      let sum = 0;
-      stackedData.push([]);
-      for (let j = 0; j < i+1; j++) {
-        sum += packagedData[j][day];
-      }
-      if (sum > 100) {sum = 100}
-      stackedData[i].push(sum); 
-    }
-  }
-}
-
-stackData();
-
-///////////////////////////////////////////
-
 const latenessAreaChartData = {
   labels: dateLabels,
   datasets: [
     {
       label: "Sleep",
-      data: stackedData[0],
+      data: packagedData[0],
       //data: [data[0].reason[0].percent],
       backgroundColor: color.Green,
       borderColor: color.Green,
@@ -72,7 +75,7 @@ const latenessAreaChartData = {
     },
     {
       label: "Transit",
-      data: stackedData[1],
+      data: packagedData[1],
       //data: [data[0].reason[1].percent + data[0].reason[0].percent],
       backgroundColor: color.Red,
       borderColor: color.Red,
@@ -80,7 +83,7 @@ const latenessAreaChartData = {
     },
     {
       label: "Other",
-      data: stackedData[2],
+      data: packagedData[2],
       //data: [data[0].reason[2].percent + data[0].reason[1].percent + data[0].reason[0].percent],
       backgroundColor: color.Blue,
       borderColor: color.Blue,
@@ -90,17 +93,23 @@ const latenessAreaChartData = {
 };
 
 const latenessAreaChartConfig = {
-  type: "line",
+  type: "bar",
   data: latenessAreaChartData,
   options: {
     scales: {
       y: {
+        min: 0,
+        max: 100,
+        stacked: true,
         beginAtZero: true,
         ticks: {
           callback: function(value, index, ticks) {
             return value + '%';
           }
         }
+      },
+      x: {
+        stacked: true,
       }
     }
   }

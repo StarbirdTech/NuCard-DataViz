@@ -11,7 +11,11 @@
   <body>
     <div class="wrapper">
       <div class="box line"><canvas id="attendanceAreaChart"></canvas></div>
-      <div class="box line"><canvas id="latenessAreaChart"></canvas></div>
+      <div class="box line">
+        <button id="typeSwitchButton line" onClick="setChartType('line')">Line</button>
+        <button id="typeSwitchButton bar" onClick="setChartType('bar')">Bar</button>
+        <canvas id="latenessAreaChart"></canvas>
+      </div>
       <div class="box pie"><canvas id="latenessDoughnutChart"></canvas></div>
     </div>
   </body>
