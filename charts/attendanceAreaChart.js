@@ -1,3 +1,37 @@
+function setChartType(type) {
+  latenessAreaChartConfig.type = type;
+  console.log(latenessAreaChartConfig.type);
+  latenessAreaChart.update();
+
+  if (checkChartType("line")) {
+    document.getElementById("typeSwitchButton line").style.borderColor='#000000';
+  } else {
+    document.getElementById("typeSwitchButton line").style.borderColor='#ffffff';
+  }
+  if (checkChartType("bar")) {
+    document.getElementById("typeSwitchButton bar").style.borderColor='#000000';
+  } else {
+    document.getElementById("typeSwitchButton bar").style.borderColor='#ffffff';
+  }
+}
+
+function checkChartType(value) {
+  if (value == latenessAreaChartConfig.type) {return true}
+  else {return false}
+}
+
+function changeFocusTime(time) {
+  if (time == "am") {
+    attendanceAreaChartConfig.options.scales.y.min = 480;
+    attendanceAreaChartConfig.options.scales.y.max = 600;
+  }
+  else if (time == "pm") {
+    attendanceAreaChartConfig.options.scales.y.min = 840;
+    attendanceAreaChartConfig.options.scales.y.max = 960;
+  }
+  attendanceAreaChart.update();
+}
+
 const attendanceAreaChartData = {
     labels: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14",],
     datasets: [

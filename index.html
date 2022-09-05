@@ -10,7 +10,11 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="box line"><canvas id="attendanceAreaChart"></canvas></div>
+      <div class="box line">
+        <button id="focus" onClick="changeFocusTime('am')">AM</button>
+        <button id="focus" onClick="changeFocusTime('pm')">PM</button>
+        <canvas id="attendanceAreaChart"></canvas>
+      </div>
       <div class="box line">
         <button id="typeSwitchButton line" onClick="setChartType('line')">Line</button>
         <button id="typeSwitchButton bar" onClick="setChartType('bar')">Bar</button>
